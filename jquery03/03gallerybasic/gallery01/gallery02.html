@@ -1,0 +1,117 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>gallery_slide</title>
+<link href="css1/reset.css" rel="stylesheet">
+<link href="css1/gallery.css" rel="stylesheet">
+
+
+<script src="../../../js/jquery-3.6.1.min.js"></script>
+</head>
+
+<body>
+<section>
+<h1>Slide Gallery</h1>
+        <p id="prev"><img src="img/prev.png" alt="앞으로"></p>
+        <p id="next"><img src="img/next.png" alt="뒤로"></p>
+<div id="view">
+        <ul id="source">
+        <li><img src="img/pic01.jpg" alt="화보1"></li>
+        <li><img src="img/pic02.jpg" alt="화보3"></li>
+        <li><img src="img/pic03.jpg" alt="화보4"></li>
+        <li><img src="img/pic04.jpg" alt="화보5"></li>
+        <li><img src="img/pic05.jpg" alt="화보6"></li>
+        </ul>
+</div>
+</section>
+
+
+<script>
+
+$(function(){
+
+// 준비하기
+let liWidth= $('ul>li').width();
+$('ul>li:last').prependTo('ul');     
+$('ul').css('margin-left','-'+liWidth+'px');
+let str;
+
+
+// 이벤트(클릭)
+$('#prev').on('click',function(e){
+        // margin-left =margin-left -400px
+        //  margin-left -= 400px
+
+        $('#prev,#next').hide()
+        $('ul').animate({marginLeft:"-="+liWidth+"px"},function(){
+                $('ul>li:first').appendTo('ul')
+                $('ul').css('marginLeft','-'+liWidth+'px');
+                $('#prev,#next').show();
+        })
+})
+
+$('#next').on('click',function(e){
+
+        $('#prev,#next').hide()
+
+        $('ul').animate({marginLeft:"+="+liWidth+"px"},function(){
+                $('ul>li:last').prependTo('ul');
+                $('ul').css('marginLeft','-'+liWidth+'px');
+                $('#prev,#next').show()
+        })
+
+})
+
+
+// 타이머 작동
+timer()
+
+// 타이머에 들어가는 함수
+function ani(){
+        $('#prev,#next').hide()
+        $('ul').animate({marginLeft:"+="+liWidth+"px"},function(){
+                $('ul>li:last').prependTo('ul');
+                $('ul').css('marginLeft','-'+liWidth+'px');
+                $('#prev,#next').show();
+        })
+}
+
+// 타이머를 작동시키는 함수
+
+function timer(){
+        str = setInterval(ani, 2000)
+}
+
+
+// 타이머를 중단시키는 함수
+function stop(){
+        clearInterval(str)
+}
+
+
+// 타이머 이벤트 작동
+
+
+$('ul>li').each(function(){
+        $(this).on('mouseenter',function(){
+                stop();
+        })
+})
+
+
+$('ul>li').each(function(){        
+        $(this).on('mouseleave',function(){
+                timer();
+        })
+})
+
+
+})
+
+
+
+</script>
+</body>
+</html>

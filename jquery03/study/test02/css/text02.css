@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+body{
+    background-color: rgba(9, 1, 6, 0.5);
+}
+
+section{
+    padding: 0 auto;
+}
+
+figure{
+    margin: 200px auto;
+    border: 15px double rgb(18, 250, 169);
+    width: 1000px;
+    margin-bottom: 35px;
+    position: relative
+    /* 여기서 position이 들어가는 이유는 figure를 기준으로
+    이미지들이 쌓여서 z-index를 auto로 만들어주기 위해서이다. */
+}
+
+figure>img{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+figure>figcaption{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 500px;
+}
+
+ul{
+    margin: 0 auto;
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+    border: 5px dashed #000;
+}
+
+ul>li>img{
+    width: 200px;
+}

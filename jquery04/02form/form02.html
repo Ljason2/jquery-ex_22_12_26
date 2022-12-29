@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>val</title>
+<script src="/js/jquery-3.6.1.min.js"></script>
+</head>
+
+<body>
+
+<p> <input type="text" name="user"></p>
+<p><textarea rows="3" cols="25"></textarea>></p>
+<button>Set the value of the input field</button>
+    
+
+<script>
+    $(function(){
+        $('button').on('click',function(e){
+            $('input').val('welcome')
+            $('textarea').attr('placeholder','설명글')
+        })
+
+    })
+
+
+
+</script>
+</body>
+</html>

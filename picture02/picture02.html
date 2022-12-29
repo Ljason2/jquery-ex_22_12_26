@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>picture02</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/picture02.css">
+    <script src="/js/jquery-3.6.1.min.js"></script>
+</head>
+<body>
+    
+
+    <p><a href="#">next</a></p>
+
+
+    <ul>
+        <li></li>
+    </ul>
+
+
+    <script>
+        
+          $(function(){
+            let i=7;
+            $('p').on('click',function(e){
+            ++i;
+            $('ul').prepend('<li>')
+            if(i>13){i=7}
+            $('li:eq(0)').css('background-image','url("./images/pic_'+i+'.jpg')
+            $('ul>li:last').fadeOut(400,function(){
+                $('ul>li:not(:eq(0))').remove()
+            })
+            return false
+            })
+          })
+
+        /* 코드 설명 
+        i값이 증가하면서 배경 이미지들이 달라지는 원리이고 i 값이 13을 초과하면 다시 원래 7로 돌아오게끔 설정해두었다.
+        */
+    </script>
+</body>
+</html>

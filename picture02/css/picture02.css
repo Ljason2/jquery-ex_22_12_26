@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+
+body{
+    position: relative;
+}
+
+p{
+    width: 350px;
+    border: 2px solid white;
+    background-color: rgba(250, 230, 215, 0.5);
+    text-align: center;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -175px;
+    margin-top: -35px;
+    z-index: 1000;
+    line-height: 100px;
+    cursor: pointer;
+}
+
+p>a{
+    font-size: 50px;
+    color: white;
+}
+
+
+ul{}
+
+
+ul>li{
+width: 100vw;
+height: 100vh;
+position: absolute;
+left: 0;
+top: 0;
+background-image: url("../images/pic_7.jpg");
+background-repeat: no-repeat;
+background-position: center;
+background-size: 100% 100%;
+}
+

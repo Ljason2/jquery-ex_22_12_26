@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>picture01</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/picture01.css">
+    <script src="/js/jquery-3.6.1.min.js"></script>
+</head>
+<body>
+    
+
+<div id="wrap">
+<div id="big">
+<img src="./pic/big_pic_06.jpg" alt="상세이미지">
+</div>
+
+
+<div id="outer">
+    <p id="prev">&uarr;</p>
+    <p id="next">&darr;</p>
+
+    <!-- 보이는 부분 -->
+<ul id="show">
+    <!-- 움직이는 부분 -->
+    <div id="all">
+    <li><img src="./pic/pic_06.jpg" alt="./pic/big_pic_06.jpg"></li>
+    <li><img src="./pic/pic_07.jpg" alt="./pic/big_pic_07.jpg"></li>
+    <li><img src="./pic/pic_08.jpg" alt="./pic/big_pic_08.jpg"></li>
+    <li><img src="./pic/pic_09.jpg" alt="./pic/big_pic_09.jpg"></li>
+    <li><img src="./pic/pic_11.jpg" alt="./pic/big_pic_11.jpg"></li>
+    <li><img src="./pic/pic_13.jpg" alt="./pic/big_pic_13.jpg"></li>
+    </div>
+</ul>
+</div>
+
+</div>
+</body>
+
+<script>
+$(function(){
+
+
+    // 준비하기
+    let liHeight=$('ul li').height();
+    $('ul li:last').prependTo('#all');
+    $('#all').css('margin-top','-'+liHeight+'px');
+
+
+    // 클릭하면 상하로 움직이는 기능
+    $('#prev').on('click',function(e){
+        $('#all').animate({marginTop:"-="+liHeight+"px"},
+        function(){
+            $('ul li:first').appendTo('#all')
+            $('#all').css('marginTop','-'+liHeight+'px');
+        })
+    })
+    $('#next').on('click',function(e){
+        $('#all').animate({marginTop:"+="+liHeight+"px"},
+        function(){
+            $('ul li:last').prependTo('#all')
+            $('#all').css('marginTop','-'+liHeight+'px');
+        })
+    })
+
+
+    // 클릭하면 이미지가 페이드아웃됨.
+$('#all>li>img').on('click',function(e){
+    let pic= $(this).attr('alt')
+    $('#big').prepend('<img src="'+pic+'" alt="큰이미지">')
+    $('#big>img:last').fadeOut(400,function(){
+        $('#big>img:not(:eq(0))').remove()
+    })
+    
+})
+
+
+
+
+})
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>속성가져오기</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+    <link rel="stylesheet" href="css/text02.css">
+    <script src="../../../js/jquery-3.6.1.min.js"></script>
+</head>
+<body>
+<section>
+        <figure>
+
+          <img src="images/flower05.jpg" alt="flower02">
+            <figcaption class="text">flower1</figcaption>
+          </figure>
+<ul>
+    <li><img src="images/flower01.jpg" alt="flower01"></li>
+    <li><img src="images/flower02.jpg" alt="flower02"></li>
+    <li><img src="images/flower03.jpg" alt="flower03"></li>
+    <li><img src="images/flower04.jpg" alt="flower04"></li>
+</ul>
+</section>
+
+
+
+
+<script>
+
+$(function(){
+  $('ul>li>img').on('click',function(e){
+    const pic=$(this).attr('src')
+    const str=$(this).attr('alt')
+    $('figure').prepend('<img src="'+pic+'"alt="상세이미지">')
+    $('figure>img:last').fadeOut(400,function(){
+      $('figure>img:not(:eq(0))').remove()
+    })
+    
+    $('figure>figcaption').text(str)
+
+  })
+})
+
+
+</script>
+</body>
+</html>

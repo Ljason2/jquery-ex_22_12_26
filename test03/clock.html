@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/clock.css">
+    <script src="../js/jquery-3.6.1.min.js"></script>
+    
+</head>
+<body>
+
+    <img class="logo" src="./img/logo.png" alt="logo">
+    <p class="datee">
+        <span class="year"></span>년
+        <span class="month"></span>월
+        <span class="date"></span>일
+    </p>
+
+    <p class="timee">
+        <span class="hour"></span>:
+        <span class="minute"></span>:
+        <span class="seconds"></span>
+    </p>
+
+    <img class="hand" src="./img/hand.png" alt="hand">
+
+    <ul class="menu">
+        <li><a href="./img/morning.jpg">Morning</a></li>
+        <li><a href="./img/afternoon.jpg">Afternoon</a></li>
+        <li><a href="./img/evening.jpg">evening</a></li>
+        <li><a href="./img/night.jpg">night</a></li>
+        <li><a href="">현재</a></li>
+    </ul>
+
+
+</body>
+<script>
+    $(function(){
+
+
+    // 타이머 함수
+    function timer(){
+
+    // 선언
+    const today=new Date();
+    const yy=today.getFullYear();
+    const mm=today.getMonth()+1;
+    const dd=today.getDate();
+    const hr=today.getHours();
+    const mn=today.getMinutes();
+    const sc=today.getSeconds();
+
+
+    // 분, 초 00단위 만들기
+    if(mn<10){
+        $('.minute').text('0'+mn)
+    }else{
+        $('.minute').text(mn)
+
+    }
+    if(sc<10){
+        $('.seconds').text('0'+sc)
+    }else{
+        $('.seconds').text(sc)
+
+    }
+
+    // 시간을 보기 편하게 오후2시 이런식으로 만들기.
+    if(hr>12){
+        $('.hour').text('오후'+'0'+(hr-12))
+    } 
+    else if(hr===12){
+        $('.hour').text('오후'+hr)
+    }
+    else if(10<=hr && hr<12){
+        $('.hour').text('오전'+hr)
+    }
+    else if(hr<10){
+        $('.hour').text('오전'+'0'+hr)
+    }
+    else{
+    $('.hour').text(hr)
+    }
+
+
+
+    // 날짜 넣어주기
+    $('.year').text(yy)
+    $('.month').text(mm)
+    $('.date').text(dd)
+
+
+    // 현재를 클릭했을 때 현재시간에 맞는 배경화면 보여주기
+    $('li:last>a').on('click',function(e){
+        if(6<hr && hr<=12){
+        const last=$('li:eq(0)>a').attr('href')
+        $('body').css('background-image','url("'+last+'")')
+        }
+    else if(12<hr && hr<=18){
+     const last=$('li:eq(1)>a').attr('href')
+        $('body').css('background-image','url("'+last+'")')
+         }
+    else if(18<hr && hr<24){
+        const last=$('li:eq(2)>a').attr('href')
+        $('body').css('background-image','url("'+last+'")')
+
+    }
+    else{
+        const last=$('li:eq(3)>a').attr('href')
+        $('body').css('background-image','url("'+last+'")')
+    }
+
+
+    return false;
+    })
+
+
+
+    }
+
+    timer()
+    setInterval(timer,1000)
+
+
+
+
+
+    // a 요소를 클릭하면 배경이 변하는 효과를 준다.
+    $('a').on('click',function(e){
+        const back=$(this).attr('href')
+        $('body').css('background-image','url("'+back+'")')
+        return false;
+    })
+    })
+
+    
+
+
+
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>val</title>
+<script src="/js/jquery-3.6.1.min.js"></script>
+</head>
+
+<body>
+
+<input type="text" value="some text">
+<p></p>
+
+<script>
+    $(function(){
+        $('input').on('keyup',function(e){
+            const str=$(this).val();
+            $('p').text(str);
+        })
+        $('input').on('blur',function(e){
+            $(this).val('')
+            $('p').empty()
+        })
+    })
+
+</script>
+</body>
+</html>

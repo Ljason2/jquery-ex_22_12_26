@@ -1,0 +1,50 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{
+    background-color: bisque;
+}
+
+#all{
+    position: absolute;
+    left:  0px;
+    top: 1px;
+    width:3200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#show{
+width: 800px;
+height: 142px;
+overflow: hidden;
+position: relative;
+border: 8px solid black;
+margin: 500px auto;
+}
+
+ul{
+display: flex;
+}
+
+ul>li img{
+    width: 200px;
+}
+
+#prev{
+position: absolute;
+left: 0;
+top: 50%;
+margin-top: -11px;
+z-index: 1000;
+}
+
+
+
+#next{
+position: absolute;
+right: 0;
+top: 50%;
+margin-top: -11px;
+z-index: 1000;
+}
